@@ -1,4 +1,4 @@
-![Spotify API](design.jpg)
+![Spotify API](design2.jpg)
 
 # Getting Started with Create React App
 
