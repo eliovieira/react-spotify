@@ -184,7 +184,14 @@
 }
 
 .column {
-  width: 300px;
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.playlistTrackDetails {
+  display: flex;
 }
 
 .playlistTrackNameImage {
@@ -198,4 +205,11 @@
   display: flex;
   justify-content: space-around;
   padding-bottom: 1rem;
+}
+
+.likedSongsTitleArtist {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
 }

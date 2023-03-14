@@ -30,7 +30,7 @@
 
 .searchInput:focus {
   border-color: #1db954;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 .searchInput:focus::placeholder {
   visibility: hidden;
