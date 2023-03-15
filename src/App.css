@@ -63,7 +63,6 @@
   padding: 1rem;
   /* border: 1px solid white; */
   border-radius: 6px;
-  cursor: pointer;
   background-color: #181818;
 
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -180,7 +179,6 @@
 
 .playlistItem:hover {
   background-color: #181818;
-  cursor: pointer;
 }
 
 .column {
@@ -188,6 +186,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.column:first-child {
+  width: 20px;
+}
+
+.column:last-child {
+  width: 20px;
 }
 
 .playlistTrackDetails {
@@ -205,11 +211,22 @@
   display: flex;
   justify-content: space-around;
   padding-bottom: 1rem;
+  color: #b3b3b3;
 }
 
 .likedSongsTitleArtist {
   display: flex;
   flex-direction: column;
-
   gap: 7px;
+}
+
+.removeBtn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: white;
+}
+
+.removeBtn:hover {
+  color: #1db954;
 }

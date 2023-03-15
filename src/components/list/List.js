@@ -32,7 +32,11 @@ const List = ({ data }) => {
             );
           })}
       </div>
-      <LikedSongs playlist={playlist} getArtists={getArtists} />
+      <LikedSongs
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+        getArtists={getArtists}
+      />
     </>
   );
 };

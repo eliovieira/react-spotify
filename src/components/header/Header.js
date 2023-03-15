@@ -1,10 +1,12 @@
 import "./Header.css";
 import axios from "axios";
 import logo from "./spotify-logo.png";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Header = ({ setData }) => {
   const [query, setQuery] = useState(null);
+  const wrapperRef = useRef(null);
+
   async function handleSearch(e) {
     e.preventDefault();
 
@@ -30,11 +32,33 @@ const Header = ({ setData }) => {
           //console.log(response.data);
           setData(response.data);
           setQuery("");
+          wrapperRef.current.classList.remove("active");
         })
         .catch(function (error) {
           console.error(error);
         });
     }
+  }
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          ref.current.classList.remove("active");
+        } else {
+          ref.current.classList.add("active");
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
   }
 
   return (
@@ -43,15 +67,24 @@ const Header = ({ setData }) => {
         <img className="logo" src={logo} height="80px" alt="logo" />
       </a>
       <form className="formSearch" onSubmit={handleSearch}>
-        <input
-          value={query || ""}
-          className="searchInput"
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="insert artist/track name"
-          required
-        ></input>
+        <div
+          ref={wrapperRef}
+          className="search"
+          onClick={useOutsideAlerter(wrapperRef)}
+        >
+          <input
+            value={query || ""}
+            className="searchInput"
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="What do you want to listen to?"
+            required
+          ></input>
 
-        <button className="searchBtn">Search</button>
+          <button className="searchBtn">
+            {" "}
+            <span className="material-symbols-outlined">search</span>
+          </button>
+        </div>
       </form>
     </>
   );
