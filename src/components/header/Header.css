@@ -28,7 +28,7 @@
 }
 
 .searchInput {
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 7px;
   min-width: 200px;
   border: none;
@@ -38,7 +38,6 @@
   background-color: transparent;
   outline: none;
   color: #191414;
-
   color: white;
   transition: 0.5s;
 }
@@ -48,8 +47,8 @@
 } */
 
 .searchBtn {
-  padding: 0.5rem;
-  border-radius: 10px;
+  padding-right: 1rem;
+  padding-top: 5px;
   border: none;
   background-color: transparent;
   color: white;
@@ -64,4 +63,21 @@
 
 .searchInputNew {
   color: white;
+}
+
+.genreBtn {
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.genreBtn:hover {
+  color: #1db954;
+}
+
+.genreBtn:disabled {
+  color: #1db954;
 }

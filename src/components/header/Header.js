@@ -3,9 +3,10 @@ import axios from "axios";
 import logo from "./spotify-logo.png";
 import { useState, useEffect, useRef } from "react";
 
-const Header = ({ setData }) => {
+const Header = ({ setData, genreList, setGenre, genre }) => {
   const [query, setQuery] = useState(null);
   const wrapperRef = useRef(null);
+  const genreBtnRef = useRef(null);
 
   async function handleSearch(e) {
     e.preventDefault();
@@ -29,10 +30,9 @@ const Header = ({ setData }) => {
       await axios
         .request(options)
         .then(function (response) {
-          //console.log(response.data);
+          wrapperRef.current.classList.remove("active");
           setData(response.data);
           setQuery("");
-          wrapperRef.current.classList.remove("active");
         })
         .catch(function (error) {
           console.error(error);
@@ -86,6 +86,22 @@ const Header = ({ setData }) => {
           </button>
         </div>
       </form>
+      {genreList &&
+        genreList.map((gnr) => {
+          return (
+            <button
+              className="genreBtn"
+              onClick={() => {
+                genre !== gnr.value && setGenre(gnr.value);
+              }}
+              key={gnr.name}
+              disabled={genre === gnr.value}
+              ref={genreBtnRef}
+            >
+              {gnr.name}
+            </button>
+          );
+        })}
     </>
   );
 };
