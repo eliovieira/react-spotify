@@ -8,7 +8,7 @@ const Header = ({ setData, genreList, setGenre, genre }) => {
   const wrapperRef = useRef(null);
   const genreBtnRef = useRef(null);
 
-  async function handleSearch(e) {
+  function handleSearch(e) {
     e.preventDefault();
 
     const options = {
@@ -27,7 +27,7 @@ const Header = ({ setData, genreList, setGenre, genre }) => {
       },
     };
     if (query) {
-      await axios
+      axios
         .request(options)
         .then(function (response) {
           wrapperRef.current.classList.remove("active");
