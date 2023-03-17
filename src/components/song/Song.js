@@ -32,7 +32,6 @@ const Song = ({ result, playlist, setPlaylist }) => {
     <div className="result" key={result.data.id}>
       <img
         src={result.data.albumOfTrack.coverArt.sources[0].url}
-        width="150px"
         alt={result.data.name}
       />
       <div className="trackInfo">

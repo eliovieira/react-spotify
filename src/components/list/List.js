@@ -2,7 +2,7 @@ import { useState } from "react";
 import LikedSongs from "../likedSongs/LikedSongs";
 import Song from "../song/Song";
 
-const List = ({ data }) => {
+const List = ({ data, genre }) => {
   const [playlist, setPlaylist] = useState([]);
 
   function getArtists(trackId) {

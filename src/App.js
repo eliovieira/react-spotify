@@ -18,30 +18,33 @@ function App() {
   ];
 
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://spotify23.p.rapidapi.com/search/",
-      params: {
-        q: `genre:${genre}`,
-        type: "multi",
-        offset: "0",
-        limit: "10",
-        numberOfTopResults: "5",
-      },
-      headers: {
-        "X-RapidAPI-Key": "4813ee6010mshf254a98ee454b41p12fe94jsnf0bb9b611826",
-        "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
-      },
-    };
+    if (genre !== "") {
+      const options = {
+        method: "GET",
+        url: "https://spotify23.p.rapidapi.com/search/",
+        params: {
+          q: `genre:${genre}`,
+          type: "multi",
+          offset: "0",
+          limit: "10",
+          numberOfTopResults: "5",
+        },
+        headers: {
+          "X-RapidAPI-Key":
+            "730d60cdc4mshd1038ddc2977edfp184505jsn8bdb7d7b9875",
+          "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+        },
+      };
 
-    axios
-      .request(options)
-      .then(function (response) {
-        setData(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+      axios
+        .request(options)
+        .then(function (response) {
+          setData(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
   }, [genre]);
 
   return (
@@ -53,7 +56,7 @@ function App() {
           setGenre={setGenre}
           genre={genre}
         />
-        <List data={data} />
+        <List data={data} genre={genre} />
         {data && <Footer />}
       </div>
     </div>

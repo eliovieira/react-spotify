@@ -71,6 +71,18 @@
   -o-animation: fadein 1s; /* Opera < 12.1 */
   animation: fadein 1s;
 }
+.result img {
+  width: 150px;
+}
+
+@media only screen and (max-width: 508px) {
+  .result {
+    width: 100px;
+  }
+  .result img {
+    width: 100px;
+  }
+}
 
 .result:hover {
   background-color: #282828;

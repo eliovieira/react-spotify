@@ -22,7 +22,7 @@ const Header = ({ setData, genreList, setGenre, genre }) => {
         numberOfTopResults: "5",
       },
       headers: {
-        "X-RapidAPI-Key": "4813ee6010mshf254a98ee454b41p12fe94jsnf0bb9b611826",
+        "X-RapidAPI-Key": "730d60cdc4mshd1038ddc2977edfp184505jsn8bdb7d7b9875",
         "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
       },
     };
@@ -33,6 +33,7 @@ const Header = ({ setData, genreList, setGenre, genre }) => {
           wrapperRef.current.classList.remove("active");
           setData(response.data);
           setQuery("");
+          setGenre("");
         })
         .catch(function (error) {
           console.error(error);
